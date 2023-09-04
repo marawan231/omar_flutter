@@ -48,7 +48,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
       controller: emailController,
       hintText: 'Email',
-      
     );
   }
 
@@ -133,7 +132,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       text: 'Register',
       onPressed: () async {
         if (_formKey.currentState!.validate()) {
-          
           if (passwordController.text != confirmPasswordController.text) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -141,7 +139,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             );
           } else {
-
             final user = User(
               id: idGenerator(),
               userEmail: emailController.text,
@@ -152,7 +149,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: heightController.text,
               weight: weightController.text,
             );
-
             await UsersDatabase.instance.create(user);
 
             ScaffoldMessenger.of(context).showSnackBar(
@@ -160,8 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 content: Text('Register Successfully'),
               ),
             );
-            Navigator.pushNamedAndRemoveUntil(
-                context, Routes.login, (route) => false);
+            Navigator.pop(context);
           }
         }
       },

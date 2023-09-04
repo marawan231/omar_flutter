@@ -16,8 +16,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-  
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -127,6 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
     for (var user in users) {
       if (user.userEmail == emailController.text &&
           user.password == passwordController.text) {
+            
         myUser = user;
 
         ScaffoldMessenger.of(context).showSnackBar(
